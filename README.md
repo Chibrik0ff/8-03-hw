@@ -1,91 +1,68 @@
-# Домашнее задание к занятию "`Система мониторинга Zabbix`" - `Чибриков Станислав`
+# Домашнее задание к занятию 9.03 "`Система мониторинга Zabbix. Часть 2`" - `Чибриков Станислав`
 
----
+### Задание 1
+Создайте свой шаблон, в котором будут элементы данных, мониторящие загрузку CPU и RAM хоста.
 
-### Задание 1. Установите Zabbix Server с веб-интерфейсом
+#### Процесс выполнения
+1. Выполняя ДЗ сверяйтесь с процессом отражённым в записи лекции.
+2. В веб-интерфейсе Zabbix Servera в разделе Templates создайте новый шаблон
+3. Создайте Item который будет собирать информацию об загрузке CPU в процентах
+4. Создайте Item который будет собирать информацию об загрузке RAM в процентах
 
-Согласно заданию выбрана последняя версия Zabbix 6.4
+#### Требования к результату
+- [ ] Прикрепите в файл README.md скриншот страницы шаблона с названием «Задание 1»
 
-1. Установка базы данных PostgreSQL
+### ОТВЕТ:
+![Скриншот-1](https://github.com/Chibrik0ff/8-03-hw/blob/main/img/9.03_1.png)
+ ---
 
-sudo apt install postgresql
+### Задание 2
+Добавьте в Zabbix два хоста и задайте им имена <фамилия и инициалы-1> и <фамилия и инициалы-2>. Например: ivanovii-1 и ivanovii-2.
 
+#### Процесс выполнения
+1. Выполняя ДЗ сверяйтесь с процессом отражённым в записи лекции.
+2. Установите Zabbix Agent на 2 виртмашины, одной из них может быть ваш Zabbix Server
+3. Добавьте Zabbix Server в список разрешенных серверов ваших Zabbix Agentов
+4. Добавьте Zabbix Agentов в раздел Configuration > Hosts вашего Zabbix Servera
+5. Прикрепите за каждым хостом шаблон Linux by Zabbix Agent
+6. Проверьте что в разделе Latest Data начали появляться данные с добавленных агентов
 
-2. Установка и распаковка репозитория
+#### Требования к результату
+- [ ] Результат данного задания сдавайте вместе с заданием 3
 
-wget https://repo.zabbix.com/zabbix/6.4/debian/pool/main/z/zabbix-release/zabbix-release_6.4-1+debian11_all.deb
+ ---
 
-dpkg -i zabbix-release_6.4-1+debian11_all.deb
+### Задание 3
+Привяжите созданный шаблон к двум хостам. Также привяжите к обоим хостам шаблон Linux by Zabbix Agent.
 
-apt update
+#### Процесс выполнения
+1. Выполняя ДЗ сверяйтесь с процессом отражённым в записи лекции.
+2. Зайдите в настройки каждого хоста и в разделе Templates прикрепите к этому хосту ваш шаблон
+3. Так же к каждому хосту привяжите шаблон Linux by Zabbix Agent
+4. Проверьте что в раздел Latest Data начали поступать необходимые данные из вашего шаблона
 
-3. Установка заббикс сервера, веб-интерфейса
+#### Требования к результату
+- [ ] Прикрепите в файл README.md скриншот страницы хостов, где будут видны привязки шаблонов с названиями «Задание 2-3». Хосты должны иметь зелёный статус подключения
 
-apt install zabbix-server-pgsql zabbix-frontend-php php7.4-pgsql zabbix-apache-conf zabbix-sql-scripts
+### ОТВЕТ:
+![Скриншот-2](https://github.com/Chibrik0ff/8-03-hw/blob/main/img/9.03_2.png)
+![Скриншот-3](https://github.com/Chibrik0ff/8-03-hw/blob/main/img/9.03_3.png)
+![Скриншот-4](https://github.com/Chibrik0ff/8-03-hw/blob/main/img/9.03_4.png)
 
+ ---
 
-4. Создание базы данных и пользователя
+### Задание 4
+Создайте свой кастомный дашборд.
 
-sudo -u postgres createuser --pwprompt zabbix
+#### Процесс выполнения
+1. Выполняя ДЗ сверяйтесь с процессом отражённым в записи лекции.
+2. В разделе Dashboards создайте новый дашборд
+3. Разместите на нём несколько графиков на ваше усмотрение.
 
-sudo -u postgres createdb -O zabbix zabbix
+#### Требования к результату
+- [ ] Прикрепите в файл README.md скриншот дашборда с названием «Задание 4»
 
+### ОТВЕТ:
+![Скриншот-5](https://github.com/Chibrik0ff/8-03-hw/blob/main/img/9.03_5.png)
 
-5. Импорт данных на сервер Zabbix
-
-zcat /usr/share/zabbix-sql-scripts/postgresql/server.sql.gz | sudo -u zabbix psql zabbix
-
-
-6. Настройка пароля бызы данных
-
-nano /etc/zabbix/zabbix_server.conf далее в файле напротив DBPassword= указываем наш пароль
-
-
-7. Рестарт и добавление в автозагрузку веб сервера и Заббикс сервера
-
-systemctl restart zabbix-server apache2
-
-systemctl enable zabbix-server apache2
-
-Скриншот авторизации в админке
-
-![alt text](https://github.com/Chibrik0ff/8-03-hw/blob/main/screen2.1.png)
----
-
-### Задание 2. Установка Zabbix Agent на два хоста
-
-В качестве одного из хостов использована машина с Zabbix серверо, в качестве второго - чистая ВМ.
-
-1. Установка заббикс агента
-
-sudo apt install zabbix-agent
-
-
-2. Рестарт и добавление в автозагрузку Заббикс агента
-
-systemctl restart zabbix-agent
-
-systemctl enable zabbix-agent
-
-
-3. Настраиваем параметры подключения заббикс агента к серверу (прописываем адреса хостов)
-
-sed -i 's/Server=127.0.0.1/Server=192.168.1.36/g' /etc/zabbix/zabbix_agent.conf
-
-sed -i 's/Server=127.0.0.1/Server=192.168.1.33/g' /etc/zabbix/zabbix_agent.con
-
-Скриншот раздела configuration
-
-![alt text](https://github.com/Chibrik0ff/8-03-hw/blob/main/screen2.3.png)
-
-Cкриншот лога zabbix agent, где видно, что он работает с сервером
-
-![alt text](https://github.com/Chibrik0ff/8-03-hw/blob/main/screen2.4.png)
-
-Cкриншот раздела Monitoring > Latest data для обоих хостов, где видны поступающие от агентов данные.
-
-![alt text](https://github.com/Chibrik0ff/8-03-hw/blob/main/screen2.2.png)
-
-![alt text](https://github.com/Chibrik0ff/8-03-hw/blob/main/screen2.5.png)
-
-
+ ---
