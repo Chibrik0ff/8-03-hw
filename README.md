@@ -8,11 +8,11 @@
 
 ### *Ответ*
 
-![1](https://github.com/Chibrik0ff/8-03-hw/blob/main/img/1.png)
+![1](https://github.com/Chibrik0ff/8-03-hw/blob/main/img/1.jpg)
 
-![2](https://github.com/Chibrik0ff/8-03-hw/blob/main/img/2.png)
+![2](https://github.com/Chibrik0ff/8-03-hw/blob/main/img/2.jpg)
 
-![3](https://github.com/Chibrik0ff/8-03-hw/blob/main/img/3.png)
+![3](https://github.com/Chibrik0ff/8-03-hw/blob/main/img/1.jpg)
 
 Файл PKT https://github.com/Chibrik0ff/8-03-hw/blob/main/hsrp_advanced_DZ1.pkt
 
