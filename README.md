@@ -9,7 +9,9 @@
 ### *Ответ*
 
 ![1](https://github.com/Chibrik0ff/8-03-hw/blob/main/img/1.png)
+
 ![2](https://github.com/Chibrik0ff/8-03-hw/blob/main/img/2.png)
+
 ![3](https://github.com/Chibrik0ff/8-03-hw/blob/main/img/3.png)
 
 Файл PKT https://github.com/Chibrik0ff/8-03-hw/blob/main/hsrp_advanced_DZ1.pkt
@@ -37,8 +39,11 @@ fi
 Файл конфига https://github.com/Chibrik0ff/8-03-hw/blob/main/keepalived.conf
 
 ![4](https://github.com/Chibrik0ff/8-03-hw/blob/main/img/4.png)
+
 ![5](https://github.com/Chibrik0ff/8-03-hw/blob/main/img/5.png)
+
 ![6](https://github.com/Chibrik0ff/8-03-hw/blob/main/img/6.png)
+
 ![7](https://github.com/Chibrik0ff/8-03-hw/blob/main/img/7.png)
 
  ---
